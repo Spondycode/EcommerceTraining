@@ -2,7 +2,7 @@ import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/actions/actions.dart' as action_blocks;
+import '/profile/profile_avatar/profile_avatar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'orders_list_model.dart';
@@ -42,29 +42,10 @@ class _OrdersListWidgetState extends State<OrdersListWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          leading: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
-            child: InkWell(
-              splashColor: Colors.transparent,
-              focusColor: Colors.transparent,
-              hoverColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-              onTap: () async {
-                await action_blocks.avatarAction(context);
-              },
-              child: Container(
-                width: 200.0,
-                height: 200.0,
-                clipBehavior: Clip.antiAlias,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                ),
-                child: Image.network(
-                  'https://picsum.photos/seed/904/600',
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
+          leading: wrapWithModel(
+            model: _model.profileAvatarModel,
+            updateCallback: () => safeSetState(() {}),
+            child: const ProfileAvatarWidget(),
           ),
           title: Align(
             alignment: const AlignmentDirectional(0.0, -1.0),

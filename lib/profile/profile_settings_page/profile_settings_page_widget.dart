@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/profile/others/profile_setting_component/profile_setting_component_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -220,215 +221,56 @@ class _ProfileSettingsPageWidgetState extends State<ProfileSettingsPageWidget> {
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Container(
-                      width: 100.0,
-                      height: 60.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).primaryBackground,
-                        borderRadius: BorderRadius.circular(12.0),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Icon(
-                            Icons.map_outlined,
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            size: 24.0,
-                          ),
-                          Expanded(
-                            child: Text(
-                              'Address',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
-                                    letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .bodyMediumFamily),
-                                  ),
-                            ),
-                          ),
-                          FlutterFlowIconButton(
-                            borderRadius: 8.0,
-                            buttonSize: 40.0,
-                            icon: Icon(
-                              Icons.arrow_forward_ios,
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              size: 18.0,
-                            ),
-                            onPressed: () async {
-                              // Go to the Address page
-
-                              context.pushNamed('AddressListPage');
-
-                              await _model.hapticFeedback(context);
-                            },
-                          ),
-                        ]
-                            .divide(const SizedBox(width: 8.0))
-                            .around(const SizedBox(width: 8.0)),
+                    wrapWithModel(
+                      model: _model.profileSettingComponentModel1,
+                      updateCallback: () => safeSetState(() {}),
+                      child: ProfileSettingComponentWidget(
+                        leadingIcon: const Icon(
+                          Icons.map_outlined,
+                        ),
+                        title: 'Addresses',
+                        onTap: () async {
+                          context.pushNamed('AddressListPage');
+                        },
                       ),
                     ),
-                    Container(
-                      width: 100.0,
-                      height: 60.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).primaryBackground,
-                        borderRadius: BorderRadius.circular(12.0),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Icon(
-                            Icons.help_outline_sharp,
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            size: 24.0,
-                          ),
-                          Expanded(
-                            child: Text(
-                              'Help',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
-                                    letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .bodyMediumFamily),
-                                  ),
-                            ),
-                          ),
-                          FlutterFlowIconButton(
-                            borderColor: Colors.transparent,
-                            borderRadius: 8.0,
-                            buttonSize: 40.0,
-                            icon: Icon(
-                              Icons.arrow_forward_ios,
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              size: 18.0,
-                            ),
-                            onPressed: () async {
-                              await _model.hapticFeedback(context);
-                            },
-                          ),
-                        ]
-                            .divide(const SizedBox(width: 8.0))
-                            .around(const SizedBox(width: 8.0)),
+                    wrapWithModel(
+                      model: _model.profileSettingComponentModel2,
+                      updateCallback: () => safeSetState(() {}),
+                      child: ProfileSettingComponentWidget(
+                        leadingIcon: const Icon(
+                          Icons.cottage_sharp,
+                        ),
+                        title: 'Home',
+                        onTap: () async {
+                          context.pushNamed('HomePage');
+                        },
                       ),
                     ),
-                    Container(
-                      width: 100.0,
-                      height: 60.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).primaryBackground,
-                        borderRadius: BorderRadius.circular(12.0),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Icon(
-                            Icons.support_agent,
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            size: 24.0,
-                          ),
-                          Expanded(
-                            child: Text(
-                              'Support',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
-                                    letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .bodyMediumFamily),
-                                  ),
-                            ),
-                          ),
-                          FlutterFlowIconButton(
-                            borderColor: Colors.transparent,
-                            borderRadius: 8.0,
-                            buttonSize: 40.0,
-                            icon: Icon(
-                              Icons.arrow_forward_ios,
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              size: 18.0,
-                            ),
-                            onPressed: () {
-                              print('IconButton pressed ...');
-                            },
-                          ),
-                        ]
-                            .divide(const SizedBox(width: 8.0))
-                            .around(const SizedBox(width: 8.0)),
+                    wrapWithModel(
+                      model: _model.profileSettingComponentModel3,
+                      updateCallback: () => safeSetState(() {}),
+                      child: ProfileSettingComponentWidget(
+                        leadingIcon: const Icon(
+                          Icons.cell_wifi,
+                        ),
+                        title: 'Certificate',
+                        onTap: () async {
+                          context.pushNamed('ProductListPage');
+                        },
                       ),
                     ),
-                    Container(
-                      width: 100.0,
-                      height: 60.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).primaryBackground,
-                        borderRadius: BorderRadius.circular(12.0),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Icon(
-                            Icons.monetization_on_outlined,
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            size: 24.0,
-                          ),
-                          Expanded(
-                            child: Text(
-                              'Expenses Overview',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
-                                    letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .bodyMediumFamily),
-                                  ),
-                            ),
-                          ),
-                          FlutterFlowIconButton(
-                            borderColor: Colors.transparent,
-                            borderRadius: 8.0,
-                            buttonSize: 40.0,
-                            icon: Icon(
-                              Icons.arrow_forward_ios,
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              size: 18.0,
-                            ),
-                            onPressed: () {
-                              print('IconButton pressed ...');
-                            },
-                          ),
-                        ]
-                            .divide(const SizedBox(width: 8.0))
-                            .around(const SizedBox(width: 8.0)),
+                    wrapWithModel(
+                      model: _model.profileSettingComponentModel4,
+                      updateCallback: () => safeSetState(() {}),
+                      child: ProfileSettingComponentWidget(
+                        leadingIcon: const Icon(
+                          Icons.pin_invoke,
+                        ),
+                        title: 'Invoice',
+                        onTap: () async {
+                          await _model.hapticFeedback(context);
+                        },
                       ),
                     ),
                   ]

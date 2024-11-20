@@ -1,8 +1,11 @@
+import '/components/cart_counter_widget.dart';
+import '/components/categories_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/actions/actions.dart' as action_blocks;
+import '/product/product_item_card/product_item_card_widget.dart';
+import '/profile/profile_avatar/profile_avatar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'product_list_page_model.dart';
@@ -45,29 +48,10 @@ class _ProductListPageWidgetState extends State<ProductListPageWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          leading: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
-            child: InkWell(
-              splashColor: Colors.transparent,
-              focusColor: Colors.transparent,
-              hoverColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-              onTap: () async {
-                await action_blocks.avatarAction(context);
-              },
-              child: Container(
-                width: 200.0,
-                height: 200.0,
-                clipBehavior: Clip.antiAlias,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                ),
-                child: Image.network(
-                  'https://picsum.photos/seed/904/600',
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
+          leading: wrapWithModel(
+            model: _model.profileAvatarModel,
+            updateCallback: () => safeSetState(() {}),
+            child: const ProfileAvatarWidget(),
           ),
           title: Align(
             alignment: const AlignmentDirectional(0.0, -1.0),
@@ -104,73 +88,10 @@ class _ProductListPageWidgetState extends State<ProductListPageWidget> {
             ),
           ),
           actions: [
-            Container(
-              width: 60.0,
-              height: 60.0,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-              ),
-              child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
-                child: Stack(
-                  children: [
-                    Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
-                      child: Container(
-                        width: 40.0,
-                        height: 40.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            color: FlutterFlowTheme.of(context).primary,
-                            width: 3.0,
-                          ),
-                        ),
-                        alignment: const AlignmentDirectional(0.0, 0.0),
-                        child: Icon(
-                          Icons.shopping_cart,
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          size: 24.0,
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: const AlignmentDirectional(1.0, -1.0),
-                      child: Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 8.0, 0.0),
-                        child: Container(
-                          width: 15.0,
-                          height: 15.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).primary,
-                            shape: BoxShape.circle,
-                          ),
-                          alignment: const AlignmentDirectional(1.0, -1.0),
-                          child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
-                            child: Text(
-                              '2',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily,
-                                    color: FlutterFlowTheme.of(context).info,
-                                    letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .bodyMediumFamily),
-                                  ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+            wrapWithModel(
+              model: _model.cartCounterModel,
+              updateCallback: () => safeSetState(() {}),
+              child: const CartCounterWidget(),
             ),
           ],
           centerTitle: false,
@@ -290,37 +211,33 @@ class _ProductListPageWidgetState extends State<ProductListPageWidget> {
                   Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Container(
-                            width: 45.0,
-                            height: 45.0,
-                            clipBehavior: Clip.antiAlias,
-                            decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                            ),
-                            child: Image.network(
-                              'https://picsum.photos/seed/873/600',
-                              fit: BoxFit.cover,
-                            ),
+                      Align(
+                        alignment: const AlignmentDirectional(0.0, -1.0),
+                        child: Container(
+                          width: MediaQuery.sizeOf(context).width * 0.9,
+                          height: 100.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
                           ),
-                          Text(
-                            'Hello World',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .bodyMediumFamily,
-                                  letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyMediumFamily),
-                                ),
+                          child: ListView(
+                            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                            shrinkWrap: true,
+                            scrollDirection: Axis.horizontal,
+                            children: [
+                              wrapWithModel(
+                                model: _model.categoriesModel1,
+                                updateCallback: () => safeSetState(() {}),
+                                child: const CategoriesWidget(),
+                              ),
+                              wrapWithModel(
+                                model: _model.categoriesModel2,
+                                updateCallback: () => safeSetState(() {}),
+                                child: const CategoriesWidget(),
+                              ),
+                            ].divide(const SizedBox(width: 8.0)),
                           ),
-                        ]
-                            .divide(const SizedBox(height: 4.0))
-                            .around(const SizedBox(height: 4.0)),
+                        ),
                       ),
                     ],
                   ),
@@ -377,103 +294,30 @@ class _ProductListPageWidgetState extends State<ProductListPageWidget> {
                           child: ListView(
                             padding: EdgeInsets.zero,
                             shrinkWrap: true,
-                            scrollDirection: Axis.vertical,
+                            scrollDirection: Axis.horizontal,
                             children: [
                               Align(
                                 alignment: const AlignmentDirectional(-1.0, -1.0),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Align(
-                                        alignment:
-                                            const AlignmentDirectional(-1.0, -1.0),
-                                        child: Container(
-                                          width: 150.0,
-                                          height: 150.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                          ),
-                                          child: Stack(
-                                            children: [
-                                              ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                child: Image.network(
-                                                  'https://picsum.photos/seed/982/600',
-                                                  width: 200.0,
-                                                  height: 200.0,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                              Align(
-                                                alignment: const AlignmentDirectional(
-                                                    1.0, -1.0),
-                                                child: Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 8.0, 8.0, 0.0),
-                                                  child: Icon(
-                                                    Icons.favorite,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondary,
-                                                    size: 24.0,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment:
-                                            const AlignmentDirectional(-1.0, -1.0),
-                                        child: Text(
-                                          'Product Title',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMediumFamily,
-                                                letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMediumFamily),
-                                              ),
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment:
-                                            const AlignmentDirectional(-1.0, -1.0),
-                                        child: Text(
-                                          'PriceItem',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodySmall
-                                              .override(
-                                                fontFamily:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodySmallFamily,
-                                                letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodySmallFamily),
-                                              ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                                child: wrapWithModel(
+                                  model: _model.productItemCardModel1,
+                                  updateCallback: () => safeSetState(() {}),
+                                  child: const ProductItemCardWidget(),
+                                ),
+                              ),
+                              Align(
+                                alignment: const AlignmentDirectional(-1.0, -1.0),
+                                child: wrapWithModel(
+                                  model: _model.productItemCardModel2,
+                                  updateCallback: () => safeSetState(() {}),
+                                  child: const ProductItemCardWidget(),
+                                ),
+                              ),
+                              Align(
+                                alignment: const AlignmentDirectional(-1.0, -1.0),
+                                child: wrapWithModel(
+                                  model: _model.productItemCardModel3,
+                                  updateCallback: () => safeSetState(() {}),
+                                  child: const ProductItemCardWidget(),
                                 ),
                               ),
                             ],
@@ -495,7 +339,7 @@ class _ProductListPageWidgetState extends State<ProductListPageWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Top Selling',
+                              'New',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -518,6 +362,7 @@ class _ProductListPageWidgetState extends State<ProductListPageWidget> {
                                     fontFamily: FlutterFlowTheme.of(context)
                                         .bodyMediumFamily,
                                     letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w500,
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey(
                                             FlutterFlowTheme.of(context)
@@ -528,7 +373,7 @@ class _ProductListPageWidgetState extends State<ProductListPageWidget> {
                         ),
                         Container(
                           width: double.infinity,
-                          height: 189.0,
+                          height: 200.0,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
@@ -536,101 +381,30 @@ class _ProductListPageWidgetState extends State<ProductListPageWidget> {
                           child: ListView(
                             padding: EdgeInsets.zero,
                             shrinkWrap: true,
-                            scrollDirection: Axis.vertical,
+                            scrollDirection: Axis.horizontal,
                             children: [
                               Align(
                                 alignment: const AlignmentDirectional(-1.0, -1.0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Align(
-                                      alignment:
-                                          const AlignmentDirectional(-1.0, -1.0),
-                                      child: Container(
-                                        width: 150.0,
-                                        height: 150.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                        ),
-                                        child: Stack(
-                                          children: [
-                                            ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                              child: Image.network(
-                                                'https://picsum.photos/seed/982/600',
-                                                width: 200.0,
-                                                height: 200.0,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                            Align(
-                                              alignment: const AlignmentDirectional(
-                                                  1.0, -1.0),
-                                              child: Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 8.0, 8.0, 0.0),
-                                                child: Icon(
-                                                  Icons.favorite,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondary,
-                                                  size: 24.0,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    Align(
-                                      alignment:
-                                          const AlignmentDirectional(-1.0, -1.0),
-                                      child: Text(
-                                        'Product Title',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMediumFamily,
-                                              fontSize: 12.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.w600,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily),
-                                            ),
-                                      ),
-                                    ),
-                                    Align(
-                                      alignment:
-                                          const AlignmentDirectional(-1.0, -1.0),
-                                      child: Text(
-                                        'PriceItem',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodySmall
-                                            .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodySmallFamily,
-                                              fontSize: 10.0,
-                                              letterSpacing: 0.0,
-                                              useGoogleFonts:
-                                                  GoogleFonts.asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodySmallFamily),
-                                            ),
-                                      ),
-                                    ),
-                                  ],
+                                child: wrapWithModel(
+                                  model: _model.productItemCardModel4,
+                                  updateCallback: () => safeSetState(() {}),
+                                  child: const ProductItemCardWidget(),
+                                ),
+                              ),
+                              Align(
+                                alignment: const AlignmentDirectional(-1.0, -1.0),
+                                child: wrapWithModel(
+                                  model: _model.productItemCardModel5,
+                                  updateCallback: () => safeSetState(() {}),
+                                  child: const ProductItemCardWidget(),
+                                ),
+                              ),
+                              Align(
+                                alignment: const AlignmentDirectional(-1.0, -1.0),
+                                child: wrapWithModel(
+                                  model: _model.productItemCardModel6,
+                                  updateCallback: () => safeSetState(() {}),
+                                  child: const ProductItemCardWidget(),
                                 ),
                               ),
                             ],
