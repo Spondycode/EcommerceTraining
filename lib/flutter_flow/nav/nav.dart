@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '/index.dart';
+import '/main.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 export 'package:go_router/go_router.dart';
@@ -29,17 +30,69 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) => const HomePageWidget(),
+      errorBuilder: (context, state) => const NavBarPage(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => const HomePageWidget(),
+          builder: (context, _) => const NavBarPage(),
         ),
         FFRoute(
           name: 'HomePage',
           path: '/homePage',
-          builder: (context, params) => const HomePageWidget(),
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'HomePage')
+              : const HomePageWidget(),
+        ),
+        FFRoute(
+          name: 'Login',
+          path: '/login',
+          builder: (context, params) => const LoginWidget(),
+        ),
+        FFRoute(
+          name: 'OrderHistory',
+          path: '/orderHistory',
+          builder: (context, params) => const OrderHistoryWidget(),
+        ),
+        FFRoute(
+          name: 'ProfileSettingsPage',
+          path: '/profileSettingsPage',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'ProfileSettingsPage')
+              : const ProfileSettingsPageWidget(),
+        ),
+        FFRoute(
+          name: 'OrdersList',
+          path: '/ordersList',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'OrdersList')
+              : const OrdersListWidget(),
+        ),
+        FFRoute(
+          name: 'ProfileSettingsDynamicPage',
+          path: '/profileSettingsDynamicPage',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'ProfileSettingsDynamicPage')
+              : const ProfileSettingsDynamicPageWidget(),
+        ),
+        FFRoute(
+          name: 'ProfileSettingsDynamicPageCopy',
+          path: '/profileSettingsDynamicPageCopy',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'ProfileSettingsDynamicPageCopy')
+              : const ProfileSettingsDynamicPageCopyWidget(),
+        ),
+        FFRoute(
+          name: 'AddressListPage',
+          path: '/addressListPage',
+          builder: (context, params) => const AddressListPageWidget(),
+        ),
+        FFRoute(
+          name: 'ProductListPage',
+          path: '/productListPage',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'ProductListPage')
+              : const ProductListPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
