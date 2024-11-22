@@ -1,8 +1,8 @@
-import '/components/cart_counter_widget.dart';
-import '/components/categories_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/product/cart_counter/cart_counter_widget.dart';
 import '/product/product_item_card/product_item_card_widget.dart';
+import '/profile/categories/categories_widget.dart';
 import '/profile/profile_avatar/profile_avatar_widget.dart';
 import 'product_list_page_widget.dart' show ProductListPageWidget;
 import 'package:flutter/material.dart';

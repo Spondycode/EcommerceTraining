@@ -14,3 +14,5 @@ export '/profile/address_list_page/address_list_page_widget.dart'
     show AddressListPageWidget;
 export '/product/product_list_page/product_list_page_widget.dart'
     show ProductListPageWidget;
+export '/product/product_detail/product_detail_widget.dart'
+    show ProductDetailWidget;

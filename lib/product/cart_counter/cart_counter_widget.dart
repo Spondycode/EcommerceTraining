@@ -70,9 +70,11 @@ class _CartCounterWidgetState extends State<CartCounterWidget> {
               alignment: const AlignmentDirectional(1.0, -1.0),
               child: Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 8.0, 0.0),
-                child: Container(
-                  width: 15.0,
-                  height: 15.0,
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 710),
+                  curve: Curves.elasticOut,
+                  width: 20.0,
+                  height: 20.0,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).primary,
                     shape: BoxShape.circle,

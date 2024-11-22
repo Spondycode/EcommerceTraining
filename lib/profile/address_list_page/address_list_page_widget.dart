@@ -85,57 +85,68 @@ class _AddressListPageWidgetState extends State<AddressListPageWidget> {
           centerTitle: false,
           elevation: 2.0,
         ),
-        body: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 24.0, 12.0, 24.0),
-              child: Container(
-                width: double.infinity,
-                height: 60.0,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).accent1,
-                  borderRadius: BorderRadius.circular(14.0),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    FlutterFlowIconButton(
-                      borderRadius: 8.0,
-                      buttonSize: 40.0,
-                      icon: Icon(
-                        Icons.add_sharp,
-                        color: FlutterFlowTheme.of(context).primary,
-                        size: 24.0,
+        body: Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(
+              valueOrDefault<double>(
+                FFAppConstants.paddingFromLeft.toDouble(),
+                0.0,
+              ),
+              0.0,
+              valueOrDefault<double>(
+                FFAppConstants.paddingFromRight.toDouble(),
+                0.0,
+              ),
+              0.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 24.0, 12.0, 24.0),
+                child: Container(
+                  width: double.infinity,
+                  height: 60.0,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).accent1,
+                    borderRadius: BorderRadius.circular(14.0),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      FlutterFlowIconButton(
+                        borderRadius: 8.0,
+                        buttonSize: 40.0,
+                        icon: Icon(
+                          Icons.add_sharp,
+                          color: FlutterFlowTheme.of(context).primary,
+                          size: 24.0,
+                        ),
+                        onPressed: () {
+                          print('IconButton pressed ...');
+                        },
                       ),
-                      onPressed: () {
-                        print('IconButton pressed ...');
-                      },
-                    ),
-                    Text(
-                      'Add New Address',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily:
-                                FlutterFlowTheme.of(context).bodyMediumFamily,
-                            color: FlutterFlowTheme.of(context).primary,
-                            letterSpacing: 0.0,
-                            fontWeight: FontWeight.w500,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).bodyMediumFamily),
-                          ),
-                    ),
-                  ],
+                      Text(
+                        'Add New Address',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).bodyMediumFamily,
+                              color: FlutterFlowTheme.of(context).primary,
+                              letterSpacing: 0.0,
+                              fontWeight: FontWeight.w500,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily),
+                            ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            ListView(
-              padding: const EdgeInsets.symmetric(vertical: 12.0),
-              shrinkWrap: true,
-              scrollDirection: Axis.vertical,
-              children: [
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
-                  child: Container(
+              ListView(
+                padding: const EdgeInsets.symmetric(vertical: 12.0),
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                children: [
+                  Container(
                     width: 100.0,
                     height: 140.0,
                     decoration: BoxDecoration(
@@ -301,10 +312,7 @@ class _AddressListPageWidgetState extends State<AddressListPageWidget> {
                       ],
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
-                  child: Container(
+                  Container(
                     width: 100.0,
                     height: 140.0,
                     decoration: BoxDecoration(
@@ -474,10 +482,10 @@ class _AddressListPageWidgetState extends State<AddressListPageWidget> {
                       ],
                     ),
                   ),
-                ),
-              ].divide(const SizedBox(height: 12.0)),
-            ),
-          ],
+                ].divide(const SizedBox(height: 12.0)),
+              ),
+            ],
+          ),
         ),
       ),
     );

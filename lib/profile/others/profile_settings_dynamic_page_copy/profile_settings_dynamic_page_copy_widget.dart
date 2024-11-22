@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/profile/others/profile_setting_component/profile_setting_component_widget.dart';
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -199,59 +200,23 @@ class _ProfileSettingsDynamicPageCopyWidgetState
                       itemBuilder: (context, profileListItemsIndex) {
                         final profileListItemsItem =
                             profileListItems[profileListItemsIndex];
-                        return Container(
-                          width: 100.0,
-                          height: 60.0,
-                          decoration: BoxDecoration(
-                            color:
-                                FlutterFlowTheme.of(context).primaryBackground,
-                            borderRadius: BorderRadius.circular(12.0),
+                        return wrapWithModel(
+                          model: _model.profileSettingComponentModels.getModel(
+                            'id-${profileListItemsIndex.toString()}',
+                            profileListItemsIndex,
                           ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Icon(
-                                Icons.map_outlined,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                size: 24.0,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  profileListItemsIndex.toString(),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: FlutterFlowTheme.of(context)
-                                            .bodyMediumFamily,
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
-                                        letterSpacing: 0.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMediumFamily),
-                                      ),
-                                ),
-                              ),
-                              FlutterFlowIconButton(
-                                borderColor: Colors.transparent,
-                                borderRadius: 8.0,
-                                buttonSize: 40.0,
-                                icon: Icon(
-                                  Icons.arrow_forward_ios,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  size: 18.0,
-                                ),
-                                onPressed: () {
-                                  print('IconButton pressed ...');
-                                },
-                              ),
-                            ]
-                                .divide(const SizedBox(width: 8.0))
-                                .around(const SizedBox(width: 8.0)),
+                          updateCallback: () => safeSetState(() {}),
+                          child: ProfileSettingComponentWidget(
+                            key: Key(
+                              'Keyl4l_${'id-${profileListItemsIndex.toString()}'}',
+                            ),
+                            leadingIcon: const Icon(
+                              Icons.map_rounded,
+                            ),
+                            title: profileListItemsIndex.toString(),
+                            onTap: () async {
+                              context.pushNamed('AddressListPage');
+                            },
                           ),
                         );
                       },

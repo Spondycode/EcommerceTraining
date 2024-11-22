@@ -1,8 +1,11 @@
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/profile/others/profile_setting_component/profile_setting_component_widget.dart';
+import '/profile/profile_avatar/profile_avatar_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'profile_settings_page_model.dart';
@@ -16,15 +19,89 @@ class ProfileSettingsPageWidget extends StatefulWidget {
       _ProfileSettingsPageWidgetState();
 }
 
-class _ProfileSettingsPageWidgetState extends State<ProfileSettingsPageWidget> {
+class _ProfileSettingsPageWidgetState extends State<ProfileSettingsPageWidget>
+    with TickerProviderStateMixin {
   late ProfileSettingsPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => ProfileSettingsPageModel());
+
+    animationsMap.addAll({
+      'profileSettingComponentOnPageLoadAnimation1': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(
+                valueOrDefault<double>(
+                  -MediaQuery.sizeOf(context).width - 100,
+                  0.0,
+                ),
+                0.0),
+            end: const Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'profileSettingComponentOnPageLoadAnimation2': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 400.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(
+                valueOrDefault<double>(
+                  -MediaQuery.sizeOf(context).width - 100,
+                  0.0,
+                ),
+                0.0),
+            end: const Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'profileSettingComponentOnPageLoadAnimation3': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 800.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(
+                valueOrDefault<double>(
+                  -MediaQuery.sizeOf(context).width - 100,
+                  0.0,
+                ),
+                0.0),
+            end: const Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'profileSettingComponentOnPageLoadAnimation4': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 1200.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(
+                valueOrDefault<double>(
+                  -MediaQuery.sizeOf(context).width - 100,
+                  0.0,
+                ),
+                0.0),
+            end: const Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+    });
   }
 
   @override
@@ -159,65 +236,84 @@ class _ProfileSettingsPageWidgetState extends State<ProfileSettingsPageWidget> {
         ),
         body: Align(
           alignment: const AlignmentDirectional(0.0, 0.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Container(
-                    width: 150.0,
-                    height: 150.0,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: FlutterFlowTheme.of(context).secondary,
-                        width: 4.0,
-                      ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(2.0),
-                      child: Container(
-                        width: 200.0,
-                        height: 200.0,
-                        clipBehavior: Clip.antiAlias,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                        ),
-                        child: Image.network(
-                          'https://picsum.photos/seed/58/600',
-                          fit: BoxFit.cover,
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(
+                valueOrDefault<double>(
+                  FFAppConstants.paddingFromLeft.toDouble(),
+                  0.0,
+                ),
+                0.0,
+                valueOrDefault<double>(
+                  FFAppConstants.paddingFromRight.toDouble(),
+                  0.0,
+                ),
+                0.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Container(
+                      width: 150.0,
+                      height: 150.0,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: FlutterFlowTheme.of(context).secondary,
+                          width: 4.0,
                         ),
                       ),
+                      child: wrapWithModel(
+                        model: _model.profileAvatarModel,
+                        updateCallback: () => safeSetState(() {}),
+                        child: const Hero(
+                          tag: 'avatarHeroTag',
+                          transitionOnUserGestures: true,
+                          child: Material(
+                            color: Colors.transparent,
+                            child: ProfileAvatarWidget(),
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                  Text(
-                    'Dave Allen',
-                    style: FlutterFlowTheme.of(context).titleSmall.override(
-                          fontFamily:
-                              FlutterFlowTheme.of(context).titleSmallFamily,
-                          letterSpacing: 0.0,
-                          useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).titleSmallFamily),
-                        ),
-                  ),
-                  Text(
-                    'david@spondycode.dev',
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily:
-                              FlutterFlowTheme.of(context).bodyMediumFamily,
-                          letterSpacing: 0.0,
-                          useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).bodyMediumFamily),
-                        ),
-                  ),
-                ].divide(const SizedBox(height: 8.0)).around(const SizedBox(height: 8.0)),
-              ),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
-                child: Column(
+                    if (MediaQuery.sizeOf(context).width > 600.0)
+                      Text(
+                        dateTimeFormat("yMMMd", getCurrentTimestamp),
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).bodyMediumFamily,
+                              letterSpacing: 0.0,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily),
+                            ),
+                      ),
+                    Text(
+                      'Dave Allen',
+                      style: FlutterFlowTheme.of(context).titleSmall.override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).titleSmallFamily,
+                            letterSpacing: 0.0,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).titleSmallFamily),
+                          ),
+                    ),
+                    Text(
+                      'david@spondycode.dev',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).bodyMediumFamily,
+                            letterSpacing: 0.0,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).bodyMediumFamily),
+                          ),
+                    ),
+                  ].divide(const SizedBox(height: 8.0)).around(const SizedBox(height: 8.0)),
+                ),
+                Column(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -233,7 +329,8 @@ class _ProfileSettingsPageWidgetState extends State<ProfileSettingsPageWidget> {
                           context.pushNamed('AddressListPage');
                         },
                       ),
-                    ),
+                    ).animateOnPageLoad(animationsMap[
+                        'profileSettingComponentOnPageLoadAnimation1']!),
                     wrapWithModel(
                       model: _model.profileSettingComponentModel2,
                       updateCallback: () => safeSetState(() {}),
@@ -246,7 +343,8 @@ class _ProfileSettingsPageWidgetState extends State<ProfileSettingsPageWidget> {
                           context.pushNamed('HomePage');
                         },
                       ),
-                    ),
+                    ).animateOnPageLoad(animationsMap[
+                        'profileSettingComponentOnPageLoadAnimation2']!),
                     wrapWithModel(
                       model: _model.profileSettingComponentModel3,
                       updateCallback: () => safeSetState(() {}),
@@ -254,12 +352,13 @@ class _ProfileSettingsPageWidgetState extends State<ProfileSettingsPageWidget> {
                         leadingIcon: const Icon(
                           Icons.cell_wifi,
                         ),
-                        title: 'Certificate',
+                        title: 'Product List',
                         onTap: () async {
                           context.pushNamed('ProductListPage');
                         },
                       ),
-                    ),
+                    ).animateOnPageLoad(animationsMap[
+                        'profileSettingComponentOnPageLoadAnimation3']!),
                     wrapWithModel(
                       model: _model.profileSettingComponentModel4,
                       updateCallback: () => safeSetState(() {}),
@@ -272,13 +371,14 @@ class _ProfileSettingsPageWidgetState extends State<ProfileSettingsPageWidget> {
                           await _model.hapticFeedback(context);
                         },
                       ),
-                    ),
+                    ).animateOnPageLoad(animationsMap[
+                        'profileSettingComponentOnPageLoadAnimation4']!),
                   ]
                       .divide(const SizedBox(height: 12.0))
                       .around(const SizedBox(height: 12.0)),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
